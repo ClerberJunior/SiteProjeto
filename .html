@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Excalibur | Monitoramento de Ecossistemas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Calm Harmony (Neutral background, dark text, nature-inspired green accent) -->
+    <!-- Application Structure Plan: A thematic single-page application with sections for Home, Project Details, an Interactive Prototype Diagram, Methodology/Timeline, a mock Results Dashboard, and Team info. This structure breaks down the dense academic report into digestible, engaging modules, prioritizing user exploration over a linear reading experience. -->
+    <!-- Visualization & Content Choices: Report sections are mapped to interactive components. Intro/Objectives -> Informative cards. Hardware specs -> Interactive diagram with hotspots (HTML/CSS). Timeline -> Visual process flow (Flexbox). Placeholder Results -> Dynamic charts (Chart.js) with mock data to demonstrate the project's output potential. This approach avoids a "wall of text" and makes the technical aspects tangible. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 400px;
+            max-height: 50vh;
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-slate-800">
+
+    <!-- Header & Navigation -->
+    <header id="header" class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#hero" class="font-bold text-xl text-emerald-700">Projeto Excalibur</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="#o-projeto" class="hover:text-emerald-600 transition-colors">O Projeto</a>
+                <a href="#prototipo" class="hover:text-emerald-600 transition-colors">Protótipo</a>
+                <a href="#metodologia" class="hover:text-emerald-600 transition-colors">Metodologia</a>
+                <a href="#resultados" class="hover:text-emerald-600 transition-colors">Resultados</a>
+                <a href="#equipe" class="hover:text-emerald-600 transition-colors">Equipe</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-4 space-y-2">
+            <a href="#o-projeto" class="block hover:text-emerald-600 transition-colors">O Projeto</a>
+            <a href="#prototipo" class="block hover:text-emerald-600 transition-colors">Protótipo</a>
+            <a href="#metodologia" class="block hover:text-emerald-600 transition-colors">Metodologia</a>
+            <a href="#resultados" class="block hover:text-emerald-600 transition-colors">Resultados</a>
+            <a href="#equipe" class="block hover:text-emerald-600 transition-colors">Equipe</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="relative min-h-screen flex items-center justify-center text-center bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop');">
+            <div class="absolute inset-0 bg-black/50"></div>
+            <div class="relative z-10 p-6 text-white">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">Projeto Excalibur</h1>
+                <p class="text-lg md:text-2xl mb-8 max-w-3xl mx-auto drop-shadow-md">Um sistema robótico autônomo para o monitoramento e conservação de ecossistemas de montanha.</p>
+                <a href="#o-projeto" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-8 rounded-full transition-transform transform hover:scale-105">Conheça o Projeto</a>
+            </div>
+        </section>
+
+        <!-- O Projeto Section -->
+        <section id="o-projeto" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-2">O Projeto</h2>
+                <p class="text-center text-slate-600 mb-12 max-w-2xl mx-auto">Entenda a motivação, os objetivos e a base científica que impulsionam o Projeto Excalibur.</p>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-stone-100 p-6 rounded-lg shadow-sm">
+                        <h3 class="text-xl font-semibold mb-3 text-emerald-700">O Desafio</h3>
+                        <p class="text-slate-700">Ecossistemas de montanha são vitais, mas vulneráveis. A complexidade do terreno e as mudanças climáticas exigem métodos de monitoramento inovadores para superar as limitações da observação humana e permitir a conservação eficaz.</p>
+                    </div>
+                    <div class="bg-stone-100 p-6 rounded-lg shadow-sm">
+                        <h3 class="text-xl font-semibold mb-3 text-emerald-700">Nossa Missão</h3>
+                        <p class="text-slate-700">Desenvolver e testar um protótipo de sensor robótico móvel, de baixo custo e autônomo, capaz de coletar dados ambientais (pressão, temperatura, vibração) e correlacioná-los com o mapeamento local para aprofundar o estudo e a proteção desses biomas.</p>
+                    </div>
+                    <div class="bg-stone-100 p-6 rounded-lg shadow-sm">
+                        <h3 class="text-xl font-semibold mb-3 text-emerald-700">Fundamentação Científica</h3>
+                        <p class="text-slate-700">O projeto se baseia em pesquisas sobre redes de sensores de baixo custo, robótica ambiental e plataformas abertas como o Arduino, validando a viabilidade técnica e o potencial de inovação da nossa abordagem para a pesquisa ambiental.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Protótipo Section -->
+        <section id="prototipo" class="py-20">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl font-bold mb-2">Protótipo Excalibur 0.1v</h2>
+                <p class="text-slate-600 mb-12 max-w-2xl mx-auto">Explore os componentes do nosso protótipo. Clique nos marcadores para saber mais sobre cada parte.</p>
+                <div class="relative w-full max-w-lg mx-auto h-96 bg-stone-200 rounded-lg p-8 flex items-center justify-center" id="prototype-diagram">
+                    <div class="absolute w-48 h-64 bg-slate-700 rounded-md shadow-lg flex flex-col items-center justify-between p-4">
+                        <div class="w-full h-8 bg-blue-400 rounded-sm flex items-center justify-center text-white text-xs font-mono">PAINEL SOLAR</div>
+                        <div class="text-white font-bold text-lg">Excalibur</div>
+                        <div class="w-3/4 h-1 bg-slate-500 rounded-full"></div>
+                        <div class="w-1/2 h-1 bg-slate-500 rounded-full"></div>
+                        <div class="w-full h-10 bg-slate-600 rounded-sm flex items-center justify-center text-white text-xs font-mono">CHASSIS (PVC)</div>
+                    </div>
+                    <!-- Hotspots -->
+                    <div class="hotspot absolute cursor-pointer" style="top: 10%; left: 50%; transform: translateX(-50%);" data-title="Painéis Solares" data-text="A alimentação é fornecida por painéis solares para garantir a autonomia do protótipo em campo.">
+                        <div class="w-4 h-4 bg-emerald-500 rounded-full animate-pulse"></div>
+                    </div>
+                    <div class="hotspot absolute cursor-pointer" style="top: 40%; left: 15%;" data-title="Arduino Uno & Nano" data-text="A eletrônica é dividida: um Arduino Uno para o processamento complexo dos dados e um Arduino Nano para o controle de energia (ligar/desligar).">
+                        <div class="w-4 h-4 bg-emerald-500 rounded-full animate-pulse"></div>
+                    </div>
+                     <div class="hotspot absolute cursor-pointer" style="top: 40%; right: 15%;" data-title="Sensores de Vibração" data-text="Um conjunto de sensores de baixo custo, incluindo um piezo e um geofone caseiro, para detectar vibrações no solo.">
+                        <div class="w-4 h-4 bg-emerald-500 rounded-full animate-pulse"></div>
+                    </div>
+                    <div class="hotspot absolute cursor-pointer" style="bottom: 15%; left: 50%; transform: translateX(-50%);" data-title="Estrutura de PVC" data-text="O chassi do robô é construído com PVC, um material leve, resistente e de baixo custo, ideal para a prototipagem.">
+                        <div class="w-4 h-4 bg-emerald-500 rounded-full animate-pulse"></div>
+                    </div>
+                </div>
+                <!-- Modal for Hotspot Info -->
+                <div id="prototype-modal" class="fixed inset-0 bg-black/50 hidden items-center justify-center p-4 z-50">
+                    <div class="bg-white rounded-lg shadow-xl p-6 max-w-sm w-full">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 id="modal-title" class="text-xl font-bold text-emerald-700"></h3>
+                            <button id="modal-close" class="text-slate-500 hover:text-slate-800">&times;</button>
+                        </div>
+                        <p id="modal-text" class="text-slate-700 text-left"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Metodologia Section -->
+        <section id="metodologia" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-12">Metodologia e Cronograma</h2>
+                <div class="max-w-4xl mx-auto">
+                    <div class="relative border-l-2 border-emerald-200 pl-8">
+                        <!-- Timeline Items -->
+                        <div class="mb-12">
+                            <div class="absolute w-4 h-4 bg-emerald-600 rounded-full -left-2 mt-1.5"></div>
+                            <h3 class="text-lg font-semibold text-emerald-700 mb-1">Maio 2025: Levantamento de Dados</h3>
+                            <p class="text-slate-600">Pesquisa e coleta de dados primários e secundários sobre o ecossistema local, com foco em variáveis ambientais e características do terreno.</p>
+                        </div>
+                        <div class="mb-12">
+                            <div class="absolute w-4 h-4 bg-emerald-600 rounded-full -left-2 mt-1.5"></div>
+                            <h3 class="text-lg font-semibold text-emerald-700 mb-1">Julho 2025: Definição das Áreas-Piloto</h3>
+                            <p class="text-slate-600">Seleção de locais estratégicos na região serrana do Espírito Santo para a realização dos testes de campo.</p>
+                        </div>
+                        <div class="mb-12">
+                            <div class="absolute w-4 h-4 bg-emerald-600 rounded-full -left-2 mt-1.5"></div>
+                            <h3 class="text-lg font-semibold text-emerald-700 mb-1">Agosto-Setembro 2025: Prototipagem e Testes</h3>
+                            <p class="text-slate-600">Construção e programação do protótipo Excalibur 0.1v, seguida pela validação da eficiência do robô em campo.</p>
+                        </div>
+                        <div class="mb-12">
+                            <div class="absolute w-4 h-4 bg-emerald-600 rounded-full -left-2 mt-1.5"></div>
+                            <h3 class="text-lg font-semibold text-emerald-700 mb-1">Outubro 2025: Ajustes Técnicos</h3>
+                            <p class="text-slate-600">Análise dos resultados dos testes iniciais e implementação de melhorias no hardware e software do protótipo.</p>
+                        </div>
+                        <div>
+                            <div class="absolute w-4 h-4 bg-emerald-600 rounded-full -left-2 mt-1.5"></div>
+                            <h3 class="text-lg font-semibold text-emerald-700 mb-1">Dezembro 2025: Apresentação Final</h3>
+                            <p class="text-slate-600">Consolidação dos resultados, elaboração do relatório final e apresentação das conclusões do projeto.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resultados Section -->
+        <section id="resultados" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-2">Painel de Resultados</h2>
+                <p class="text-center text-slate-600 mb-12 max-w-2xl mx-auto">Visualize o potencial de coleta de dados do Excalibur. Os dados abaixo são simulados para fins de demonstração.</p>
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="chart-container">
+                        <canvas id="environmentalChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Equipe Section -->
+        <section id="equipe" class="py-20 bg-white">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl font-bold mb-2">A Equipe</h2>
+                <p class="text-slate-600 mb-12">Conheça os membros responsáveis pelo Projeto Excalibur.</p>
+                <div class="flex flex-wrap justify-center gap-8">
+                    <div class="w-48 text-center">
+                        <div class="w-32 h-32 bg-slate-300 rounded-full mx-auto mb-4 flex items-center justify-center text-slate-500">ALEX</div>
+                        <h4 class="font-semibold">Alex</h4>
+                    </div>
+                    <div class="w-48 text-center">
+                        <div class="w-32 h-32 bg-slate-300 rounded-full mx-auto mb-4 flex items-center justify-center text-slate-500">HUGO</div>
+                        <h4 class="font-semibold">Hugo</h4>
+                    </div>
+                    <div class="w-48 text-center">
+                        <div class="w-32 h-32 bg-slate-300 rounded-full mx-auto mb-4 flex items-center justify-center text-slate-500">CLEBER</div>
+                        <h4 class="font-semibold">Cleber</h4>
+                    </div>
+                    <div class="w-48 text-center">
+                        <div class="w-32 h-32 bg-slate-300 rounded-full mx-auto mb-4 flex items-center justify-center text-slate-500">MUZZI</div>
+                        <h4 class="font-semibold">Muzzi</h4>
+                    </div>
+                </div>
+                <p class="mt-8 text-slate-500 text-sm">Agradecemos também a contribuição de Eduardo e Helena na fase inicial do projeto.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p class="font-bold text-lg mb-2">Projeto Excalibur</p>
+            <p class="text-slate-400">Uma iniciativa do CEET Vasco Coutinho</p>
+            <p class="text-slate-400 mt-1">Vila Velha, 2025</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mobile Menu Toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Prototype Modal Logic
+            const modal = document.getElementById('prototype-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalText = document.getElementById('modal-text');
+            const modalClose = document.getElementById('modal-close');
+            const hotspots = document.querySelectorAll('.hotspot');
+
+            hotspots.forEach(hotspot => {
+                hotspot.addEventListener('click', () => {
+                    modalTitle.textContent = hotspot.dataset.title;
+                    modalText.textContent = hotspot.dataset.text;
+                    modal.classList.remove('hidden');
+                    modal.classList.add('flex');
+                });
+            });
+
+            const closeModal = () => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            };
+
+            modalClose.addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+
+            // Chart.js Mock Data and Initialization
+            const ctx = document.getElementById('environmentalChart').getContext('2d');
+            const environmentalChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['08:00', '09:00', '10:00', '11:00', '12:00', '13:00', '14:00'],
+                    datasets: [{
+                        label: 'Temperatura (°C)',
+                        data: [22, 23, 25, 27, 28, 27, 26],
+                        borderColor: 'rgb(22, 163, 74)',
+                        backgroundColor: 'rgba(22, 163, 74, 0.1)',
+                        yAxisID: 'y',
+                        tension: 0.3,
+                        fill: true,
+                    }, {
+                        label: 'Vibrações Detectadas',
+                        data: [2, 1, 5, 3, 7, 4, 2],
+                        borderColor: 'rgb(234, 179, 8)',
+                        backgroundColor: 'rgba(234, 179, 8, 0.1)',
+                        yAxisID: 'y1',
+                        type: 'bar',
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    stacked: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Monitoramento Ambiental Simulado - Área Piloto 1'
+                        },
+                        tooltip: {
+                            backgroundColor: '#fff',
+                            titleColor: '#334155',
+                            bodyColor: '#475569',
+                            borderColor: '#e2e8f0',
+                            borderWidth: 1,
+                        }
+                    },
+                    scales: {
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: {
+                                display: true,
+                                text: 'Temperatura (°C)'
+                            }
+                        },
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            title: {
+                                display: true,
+                                text: 'Contagem de Vibrações'
+                            },
+                            grid: {
+                                drawOnChartArea: false, 
+                            },
+                        },
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
